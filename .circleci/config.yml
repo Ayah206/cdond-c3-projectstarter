@@ -260,7 +260,7 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            yum --no-cache-dir install --upgrade awscli 
+            yum install awscli 
       - run:
           name: Get backend url
           command: |
