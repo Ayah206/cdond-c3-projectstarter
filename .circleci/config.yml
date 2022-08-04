@@ -260,8 +260,6 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            yum install python
-            yum install node
             yum --no-cache-dir install --upgrade awscli 
       - run:
           name: Get backend url
