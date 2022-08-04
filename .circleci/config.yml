@@ -197,8 +197,6 @@ jobs:
             - project/.circleci/ansible/inventory.txt
       - destroy-environment
 
-      # Here's where you will add some code to rollback on failure
-
   configure-infrastructure:
     docker:
       # Docker image here that supports Ansible
@@ -210,7 +208,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - 49:e9:b1:3f:83:ba:65:bb:11:06:e1:6a:b2:dc:57:7a
-
       # attach workspace
       - attach_workspace:
           at: ~/
@@ -232,13 +229,12 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
+      - restore_cache:  
+          keys: [backend-build]
       - run:
           name: Run migrations
           command: |
             cd backend
-            npm cache clean --force
-            rm -rf node_modules
-            rm -rf package-lock.json
             npm install
             npm run migrations > migrations_dump.txt
       - run:
