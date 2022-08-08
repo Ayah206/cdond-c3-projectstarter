@@ -248,7 +248,7 @@ jobs:
 
   deploy-frontend:
     docker:
-      - image: amazon/aws-cli
+      - image: cimg/base:stable
     steps:
       - checkout
       - run:
@@ -258,8 +258,7 @@ jobs:
       - run:
           name: Install node and npm
           command: |
-            sudo apt update
-            sudo apt install nodejs
+            apk add nodejs14 npm
       - attach_workspace:
           at: ~/
       - run:
