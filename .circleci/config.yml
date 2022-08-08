@@ -275,7 +275,10 @@ jobs:
             - 49:e9:b1:3f:83:ba:65:bb:11:06:e1:6a:b2:dc:57:7a 
       - attach_workspace:
           at: ~/
-      - install_ansible
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --update ansible
       - install_awscli
       - install_node
       - run:
