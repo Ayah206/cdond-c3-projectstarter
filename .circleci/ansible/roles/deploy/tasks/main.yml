@@ -2,8 +2,7 @@
 - name: "Extract zip artifact"
   become: true
   shell: |
-    cd ..
-    ls 
+     echo $(pwd)
     # tar -xvf ./artifact.tar.gz
 
 # - name: "Start the App"
