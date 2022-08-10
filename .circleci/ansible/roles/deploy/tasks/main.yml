@@ -2,7 +2,7 @@
 - name: "Extract zip artifact"
   become: true
   shell: |
-    tar -xvf artifact.tar.gz
+    tar -xvf ../artifact.tar.gz
 
 - name: "Start the App"
   become: true
