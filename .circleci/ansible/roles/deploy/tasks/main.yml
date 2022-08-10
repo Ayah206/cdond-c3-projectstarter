@@ -1,10 +1,13 @@
 ---
-- name: "Extract zip artifact"
-  become: true
-  shell: |
-    ls
-    # tar -xvf ../artifact.tar.gz
+# - name: "Extract zip artifact"
+#   become: true
+#   shell: |
+#     tar -xvf ./artifact.tar.gz
 
+- name: Recursively find files 
+  ansible.builtin.find:
+    paths: /
+    recurse: yes
 # - name: "Start the App"
 #   become: true
 #   shell: |
