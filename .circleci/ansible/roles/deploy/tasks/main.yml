@@ -2,8 +2,13 @@
 - name: "Extract zip artifact"
   become: true
   shell: |
-     echo $(pwd)
+    echo $(pwd)
     # tar -xvf ./artifact.tar.gz
+    register: print_result
+
+- name: print message
+  debug:
+    msg: "{{ print_result.stdout_lines }}"
 
 # - name: "Start the App"
 #   become: true
