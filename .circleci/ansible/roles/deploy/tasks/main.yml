@@ -2,8 +2,8 @@
 # - name: "Extract zip artifact"
 #   become: true
 #   shell: |
-#      echo $(pwd)
-    # tar -xvf ./artifact.tar.gz
+#     tar -xvf ./artifact.tar.gz
+
 - name: Unarchive backend file
   ansible.builtin.unarchive:
     src: files/artifact.tar.gz
