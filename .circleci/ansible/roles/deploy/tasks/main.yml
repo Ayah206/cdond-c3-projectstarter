@@ -1,9 +1,13 @@
 ---
-- name: "Extract zip artifact"
-  become: true
-  shell: |
-     echo $(pwd)
+# - name: "Extract zip artifact"
+#   become: true
+#   shell: |
+#      echo $(pwd)
     # tar -xvf ./artifact.tar.gz
+- name: Unarchive backend file
+  ansible.builtin.unarchive:
+    src: artifact.tar.gz
+    dest: /home/ubuntu
 
 # - name: "Start the App"
 #   become: true
