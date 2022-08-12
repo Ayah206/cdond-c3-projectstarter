@@ -8,7 +8,6 @@
   ansible.builtin.unarchive:
     src: ~/artifact.tar.gz
     dest: /home/ubuntu
-    remote_src: yes
 
 
 - name: "Start the App"
