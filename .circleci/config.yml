@@ -352,14 +352,6 @@ jobs:
       - install_awscli
       - install_node
       - run:
-          name: Get backend url
-          command: |
-            cd .circleci/ansible
-            export BACKEND_IP=$(sed -n 2p inventory.txt)
-            echo "${BACKEND_IP}"
-            cd ..
-            export API_URL="http://${BACKEND_IP}:3030/api/status"
-      - run:
           name: Backend smoke test.
           command: |
             cd .circleci/ansible
@@ -368,7 +360,7 @@ jobs:
             export API_URL="http://${BACKEND_IP}:3030/api/status"
             if curl ${API_URL} | grep "ok"
             then
-                exit 0
+                exit 1
             else
                 exit 1
             fi
