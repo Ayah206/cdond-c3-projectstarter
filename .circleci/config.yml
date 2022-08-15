@@ -343,6 +343,8 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/
       - run:
           name: Install dependencies
           command: |
@@ -352,7 +354,7 @@ jobs:
       - run:
           name: Get backend url
           command: |
-            export BACKEND_IP=$(aws ec2 describe-instances...............)
+            BACKEND_IP=$(cat inventory.txt)
             echo "${BACKEND_IP}"
             export API_URL="http://${BACKEND_IP}:3030"
             echo "${API_URL}"
