@@ -358,7 +358,7 @@ jobs:
             BACKEND_IP=$(sed -n 2p inventory.txt)
             echo "${BACKEND_IP}"
             cd ..
-            export API_URL="http://${BACKEND_IP}:3030/api/status"
+            export API_URL=http://${BACKEND_IP}:3030/api/status
             echo "${API_URL}"
       - run:
           name: Backend smoke test.
