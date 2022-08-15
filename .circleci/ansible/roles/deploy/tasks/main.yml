@@ -9,7 +9,6 @@
     src: ~/project/artifact.tar.gz
     dest: /home/ubuntu
 
-
 - name: "Start the App"
   become: true
   shell: |
