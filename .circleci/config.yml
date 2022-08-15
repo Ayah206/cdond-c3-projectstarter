@@ -68,8 +68,16 @@ commands:
               npm install
               npm run migrations:revert
             fi
+  
 
 jobs:
+  delete-infrastructure:
+    docker:
+      - image: amazon/aws-cli
+    steps:
+      - checkout
+      - destroy-environment
+
   build-frontend:
     docker:
       - image: circleci/node:13.8.0
@@ -344,7 +352,7 @@ jobs:
       - run:
           name: Get backend url
           command: |
-            export API_URL="http://${BACKEND_IP}:3030"
+            export API_URL= http://${BACKEND_IP}:3030
             echo "${API_URL}"
       - run:
           name: Backend smoke test.
