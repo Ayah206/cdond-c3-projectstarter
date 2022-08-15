@@ -352,7 +352,9 @@ jobs:
       - run:
           name: Get backend url
           command: |
-            export API_URL= http://${BACKEND_IP}:3030
+            export BACKEND_IP=$(aws ec2 describe-instances...............)
+            echo "${BACKEND_IP}"
+            export API_URL= "http://${BACKEND_IP}:3030"
             echo "${API_URL}"
       - run:
           name: Backend smoke test.
