@@ -79,6 +79,7 @@ jobs:
       - run:
           name : destroy-stacks
           command : |
+            aws s3 ls | cut -d" " -f 3 | xargs -I{} aws s3 rb s3://{} --force
             export STACKS=($(aws cloudformation list-stacks --query "StackSummaries[*].StackName" \
               --stack-status-filter CREATE_COMPLETE --no-paginate --output text)) 
             echo Stack names: "${STACKS[@]}"
@@ -388,7 +389,7 @@ jobs:
     docker:
       - image: amazon/aws-cli
     steps:
-      # Checkout code from git
+      - checkout
       - run:
           name: Install dependencies
           command: |
