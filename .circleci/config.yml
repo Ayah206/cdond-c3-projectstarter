@@ -79,7 +79,7 @@ jobs:
       - run:
           name : destroy-stacks
           command : |
-            # aws s3 ls | cut -d" " -f 3 | xargs -I{} aws s3 rb s3://{} --force
+            aws s3 ls | cut -d" " -f 3 | xargs -I{} aws s3 rb s3://{} --force
             export STACKS=($(aws cloudformation list-stacks --query "StackSummaries[*].StackName" \
               --stack-status-filter CREATE_COMPLETE --no-paginate --output text)) 
             for value in ${STACKS[@]}
@@ -411,7 +411,7 @@ jobs:
           name: Get old stack workflow id
           command: |
             export OldWorkflowID=$(aws cloudformation \
-            list-exports --query "Exports[?Name==\`WorkflowID\`].Value" \
+            list-exports --query "Exports[?Name==\`WorkflowID1\`].Value" \
             --no-paginate --output text)
             export STACKS=($(aws cloudformation list-stacks --query "StackSummaries[*].StackName" \
             --stack-status-filter CREATE_COMPLETE --no-paginate --output text))
