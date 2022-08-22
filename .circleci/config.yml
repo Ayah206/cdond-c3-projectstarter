@@ -242,7 +242,7 @@ jobs:
       # Add ssh keys with fingerprint
       - add_ssh_keys:
           fingerprints:
-            - 49:e9:b1:3f:83:ba:65:bb:11:06:e1:6a:b2:dc:57:7a
+            - fc:46:45:20:d2:e7:8a:f7:31:12:d7:ba:ae:f9:67:b8
       # attach workspace
       - attach_workspace:
           at: ~/
@@ -294,7 +294,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - 49:e9:b1:3f:83:ba:65:bb:11:06:e1:6a:b2:dc:57:7a 
+            - fc:46:45:20:d2:e7:8a:f7:31:12:d7:ba:ae:f9:67:b8 
       - attach_workspace:
           at: ~/
       - install_ansible
@@ -331,7 +331,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - 49:e9:b1:3f:83:ba:65:bb:11:06:e1:6a:b2:dc:57:7a 
+            - fc:46:45:20:d2:e7:8a:f7:31:12:d7:ba:ae:f9:67:b8 
       - attach_workspace:
           at: ~/
       - install_ansible
@@ -435,17 +435,17 @@ jobs:
 workflows:
   default:
     jobs:
-      - delete-infrastructure
-      # - build-frontend
-      # - build-backend
-      # - test-frontend:
-      #     requires: [build-frontend]
-      # - test-backend:
-      #     requires: [build-backend]
-      # - scan-backend:
-      #     requires: [build-backend]
-      # - scan-frontend:
-      #     requires: [build-frontend]
+      # - delete-infrastructure
+      - build-frontend
+      - build-backend
+      - test-frontend:
+          requires: [build-frontend]
+      - test-backend:
+          requires: [build-backend]
+      - scan-backend:
+          requires: [build-backend]
+      - scan-frontend:
+          requires: [build-frontend]
       # - deploy-infrastructure:
       #     requires: [test-frontend, test-backend, scan-frontend, scan-backend]
       #     filters:
