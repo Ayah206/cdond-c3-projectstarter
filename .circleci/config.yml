@@ -242,7 +242,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - fc:46:45:20:d2:e7:8a:f7:31:12:d7:ba:ae:f9:67:b8
-      # attach workspace
       - attach_workspace:
           at: ~/
       - run:
